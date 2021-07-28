@@ -3,6 +3,8 @@ using System.Linq;
 using System.Web.Mvc;
 using Vidly.Models;
 using System.Data.Entity;
+using System.Net;
+
 namespace Vidly.Controllers
 {
     public class CustomersController : Controller
@@ -23,9 +25,13 @@ namespace Vidly.Controllers
             return View(customers);
         }
 
-        public ActionResult Details(int id)
+        public ActionResult Details(int?id)
         {
-            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var customer = _context.Customers.Include(c => c.MemberShipType).SingleOrDefault(c => c.Id == id);
 
             if (customer == null)
                 return HttpNotFound();

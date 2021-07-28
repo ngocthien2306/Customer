@@ -15,5 +15,7 @@ namespace Vidly.Models
         public bool IsSubcribedToNewLetter { get; set; }
         public MemberShipType MemberShipType { get; set; }
         public byte MembershipTypeId { get; set; }
+        [Display(Name = "Date of Birth")]
+        public DateTime? Birthdate { get; set; }
     }
 }
