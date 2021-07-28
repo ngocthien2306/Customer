@@ -196,6 +196,10 @@
     <Compile Include="Migrations\202107280704277_IsBirthdateToCustomer.Designer.cs">
       <DependentUpon>202107280704277_IsBirthdateToCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107281009540_AddMoviesModel.cs" />
+    <Compile Include="Migrations\202107281009540_AddMoviesModel.Designer.cs">
+      <DependentUpon>202107281009540_AddMoviesModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -301,6 +305,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107280704277_IsBirthdateToCustomer.resx">
       <DependentUpon>202107280704277_IsBirthdateToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107281009540_AddMoviesModel.resx">
+      <DependentUpon>202107281009540_AddMoviesModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
