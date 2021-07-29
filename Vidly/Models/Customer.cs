@@ -11,9 +11,11 @@ namespace Vidly.Models
         public int Id { get; set; }
         [Required()]
         [StringLength(100, MinimumLength = 2)]
+        [Display(Name = "Full Name")]
         public string Name { get; set; }
         public bool IsSubcribedToNewLetter { get; set; }
         public MemberShipType MemberShipType { get; set; }
+        [Display(Name = "Membership Type ID")]
         public byte MembershipTypeId { get; set; }
         [Display(Name = "Date of Birth")]
         public DateTime? Birthdate { get; set; }
