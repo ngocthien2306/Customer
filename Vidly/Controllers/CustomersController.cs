@@ -25,27 +25,47 @@ namespace Vidly.Controllers
 
             return View(customers);
         }
-        public ViewResult New()
+        public ActionResult Create()
         {
-            var memberShipType = _context.MemberShipTypes.ToList();
-            var viewModel = new NewCustomerViewModel()
+            var membershipTypes = _context.MemberShipTypes.ToList();
+            var viewModel = new NewCustomerViewModel
             {
-                MemberShipTypes = memberShipType
+                Customer = new Customer(),
+                MemberShipTypes = membershipTypes
             };
-            return View(viewModel);
+
+            return View("Create", viewModel);
         }
 
         [HttpPost]
-        public ActionResult Create([Bind(Include = "Id,Name,IsSubcribedToNewLetter,MembershipTypeId,Birthdate")]Customer newCustomer)
+        [ValidateAntiForgeryToken]
+        public ActionResult Save(Customer customer)
         {
-            if(ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                _context.Customers.Add(newCustomer);
-                _context.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(newCustomer);
+                var viewModel = new NewCustomerViewModel
+                {
+                    Customer = customer,
+                    MemberShipTypes = _context.MemberShipTypes.ToList()
+                };
 
+                return View("Create", viewModel);
+            }
+
+            if (customer.Id == 0)
+                _context.Customers.Add(customer);
+            else
+            {
+                var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
+                customerInDb.Name = customer.Name;
+                customerInDb.Birthdate = customer.Birthdate;
+                customerInDb.MembershipTypeId = customer.MembershipTypeId;
+                customerInDb.IsSubcribedToNewLetter = customer.IsSubcribedToNewLetter;
+            }
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Customers");
         }
         public ActionResult Details(int?id)
         {
