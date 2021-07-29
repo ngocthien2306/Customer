@@ -10,9 +10,10 @@ namespace Vidly.Models
     {
         public int Id { get; set; }
         [Required()]
-        [StringLength(100, MinimumLength = 2)]
+        [StringLength(50)]
         [Display(Name = "Full Name")]
         public string Name { get; set; }
+        [Display(Name ="Subcribe")]
         public bool IsSubcribedToNewLetter { get; set; }
         public MemberShipType MemberShipType { get; set; }
         [Display(Name = "Membership Type ID")]

@@ -14,8 +14,11 @@
     ViewBag.Title = "Customers";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <h2>Customers</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
 @if (!Model.Any())
 {
     <p>We don't have any customers yet.</p>

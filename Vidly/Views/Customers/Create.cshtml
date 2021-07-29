@@ -1,28 +1,62 @@
-﻿@model Vidly.ViewModels.NewCustomerViewModel
+﻿@model Vidly.Models.Customer
+
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>New Customer</h2>
+<h2>Create</h2>
 
-@using (Html.BeginForm("Create", "Customer"))
+@using (Html.BeginForm()) 
 {
-    <div class="form-group">
-        @Html.LabelFor(m => m.Customer.Name)
-        @Html.TextBoxFor(m => m.Customer.Name, new { @class = "form-control" })
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Customer.Birthdate)
-        @Html.TextBoxFor(m => m.Customer.Birthdate, new { @class = "form-control" })
-    </div>
-    <div class="checkbox">
-        <label>
-            @Html.CheckBoxFor(m => m.Customer.IsSubcribedToNewLetter) Subcribeb to Newsletter
-        </label>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Customer.MembershipTypeId)
-        @Html.DropDownListFor(m => m.Customer.MembershipTypeId,new SelectList(Model.MemberShipTypes, "Id", "NameOfMemberShip"), "Select Membership Type" ,new { @class = "form-control" })
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Customer</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsSubcribedToNewLetter, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.IsSubcribedToNewLetter)
+                    @Html.ValidationMessageFor(model => model.IsSubcribedToNewLetter, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MembershipTypeId, "MembershipTypeId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("MembershipTypeId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.MembershipTypeId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Birthdate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Birthdate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Birthdate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
     </div>
 }
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

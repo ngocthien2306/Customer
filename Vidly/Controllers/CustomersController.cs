@@ -25,14 +25,27 @@ namespace Vidly.Controllers
 
             return View(customers);
         }
-        public ViewResult Create()
+        public ViewResult New()
         {
-            var membership = _context.MemberShipTypes.ToList();
+            var memberShipType = _context.MemberShipTypes.ToList();
             var viewModel = new NewCustomerViewModel()
             {
-                MemberShipTypes = membership
+                MemberShipTypes = memberShipType
             };
             return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Create([Bind(Include = "Id,Name,IsSubcribedToNewLetter,MembershipTypeId,Birthdate")]Customer newCustomer)
+        {
+            if(ModelState.IsValid)
+            {
+                _context.Customers.Add(newCustomer);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(newCustomer);
+
         }
         public ActionResult Details(int?id)
         {
