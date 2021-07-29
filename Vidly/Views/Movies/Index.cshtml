@@ -28,29 +28,32 @@ else
                 <th>Name</th>
                 <th>Genre</th>
                 <th>Country</th>
+                <th>Release Day</th>
             </tr>
         </thead>
 
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.ActionLink(item.Name, "Details", "Movies", new { id = item.MovieID }, null)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Genre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Country)
-                </td>
+    <tr>
+        <td>
+            @Html.ActionLink(item.Name, "Edit", "Movies", new { id = item.MovieID }, null)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Genre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Country)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Releasedate)
+        </td>
+        <td>
 
-                <td>
-
-                    @Html.ActionLink("Edit", "Edit", new { id = item.MovieID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.MovieID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.MovieID })
-                </td>
-            </tr>
+            @Html.ActionLink("Edit", "Edit", new { id = item.MovieID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.MovieID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.MovieID })
+        </td>
+    </tr>
         }
 
     </table>

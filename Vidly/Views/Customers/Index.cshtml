@@ -15,9 +15,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <h2>Customers</h2>
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
+<div>
+    <button class="btn-secondary">
+        @Html.ActionLink("Create New", "Create")
+    </button>
+</div>
 @using(Html.BeginForm())
 {
    <div>

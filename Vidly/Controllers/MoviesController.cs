@@ -46,7 +46,7 @@ namespace Vidly.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MovieID,Name,Genre,Country")] Movie movie)
+        public ActionResult Create([Bind(Include = "MovieID,Name,Genre,Country,Releasedate")] Movie movie)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace Vidly.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MovieID,Name,Genre,Country")] Movie movie)
+        public ActionResult Edit([Bind(Include = "MovieID,Name,Genre,Country,Releasedate")] Movie movie)
         {
             if (ModelState.IsValid)
             {
