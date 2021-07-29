@@ -14,6 +14,7 @@ namespace Vidly.Migrations
                         MovieID = c.Int(nullable: false, identity: true),
                         Name = c.String(),
                         Genre = c.String(),
+                        Country = c.String(),
                     })
                 .PrimaryKey(t => t.MovieID);
             

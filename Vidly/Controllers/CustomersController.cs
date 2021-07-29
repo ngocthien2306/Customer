@@ -24,7 +24,10 @@ namespace Vidly.Controllers
 
             return View(customers);
         }
-
+        public ViewResult Create()
+        {
+            return View();
+        }
         public ActionResult Details(int?id)
         {
             if (id == null)
