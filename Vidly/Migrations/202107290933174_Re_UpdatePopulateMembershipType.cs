@@ -3,7 +3,7 @@ namespace Vidly.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class UpdatePopulateMembershipType : DbMigration
+    public partial class Re_UpdatePopulateMembershipType : DbMigration
     {
         public override void Up()
         {
@@ -15,6 +15,7 @@ namespace Vidly.Migrations
         
         public override void Down()
         {
+
         }
     }
 }

@@ -204,6 +204,10 @@
     <Compile Include="Migrations\202107281024385_IsCountryAndReleasedateToMovies.Designer.cs">
       <DependentUpon>202107281024385_IsCountryAndReleasedateToMovies.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107290933174_Re_UpdatePopulateMembershipType.cs" />
+    <Compile Include="Migrations\202107290933174_Re_UpdatePopulateMembershipType.Designer.cs">
+      <DependentUpon>202107290933174_Re_UpdatePopulateMembershipType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -321,6 +325,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107281024385_IsCountryAndReleasedateToMovies.resx">
       <DependentUpon>202107281024385_IsCountryAndReleasedateToMovies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107290933174_Re_UpdatePopulateMembershipType.resx">
+      <DependentUpon>202107290933174_Re_UpdatePopulateMembershipType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -18,7 +18,12 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+@using(Html.BeginForm())
+{
+   <div>
 
+   </div>
+}
 @if (!Model.Any())
 {
     <p>We don't have any customers yet.</p>
@@ -31,16 +36,26 @@ else
                 <th>Customer</th>
                 <th>Discount Rate</th>
                 <th>Membership Type</th>
+                <th>Day of Birth</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var customer in Model)
             {
-                <tr>
-                    <td>@Html.ActionLink(customer.Name, "Details", "Customers", new { id = customer.Id }, null)</td>
-                    <td>@customer.MemberShipType.DiscountRate% </td>
-                    <td>@customer.MemberShipType.NameOfMemberShip</td>
-                </tr>
+            <tr>
+                <td>@Html.ActionLink(customer.Name, "Edit", "Customers", new { id = customer.Id }, null)</td>
+                <td>@customer.MemberShipType.DiscountRate% </td>
+                <td>@customer.MemberShipType.NameOfMemberShip</td>
+                <td>@customer.Birthdate</td>
+
+                <td>
+
+                    @Html.ActionLink("Edit", "Edit", new { id = customer.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = customer.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = customer.Id })
+                </td>
+            </tr>
+
             }
         </tbody>
     </table>
