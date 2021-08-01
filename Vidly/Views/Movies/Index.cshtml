@@ -5,38 +5,38 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Movies</h2>
-@using (Html.BeginForm())
-{
-    <div>
-        <button class="btn btn-outline-primary">
-            @Html.ActionLink("Create New", "Create")
-        </button>
-    </div>
-}
-<br/>
+<h2>Index</h2>
 
-@if (!Model.Any())
-{
-    <p> We don't have any customers yet. </p>
-}
-else
-{
-    <table class="table table-bordered table-hover">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Genre</th>
-                <th>Country</th>
-                <th>Release Day</th>
-            </tr>
-        </thead>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Genre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Country)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Releasedate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DayAdded)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AmountOfRock)
+        </th>
+        <th></th>
+    </tr>
 
-        @foreach (var item in Model)
-        {
+@foreach (var item in Model) {
     <tr>
         <td>
-            @Html.ActionLink(item.Name, "Edit", "Movies", new { id = item.MovieID }, null)
+            @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Genre)
@@ -45,17 +45,20 @@ else
             @Html.DisplayFor(modelItem => item.Country)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Releasedate)
+            @Html.DisplayFor(modelItem => item.Releasedate, "{0:d MMM yyyy}")
         </td>
         <td>
-
-            @Html.ActionLink("Edit", "Edit", new { id = item.MovieID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.MovieID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.MovieID })
+            @Html.DisplayFor(modelItem => item.DayAdded)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AmountOfRock)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MovieID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MovieID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MovieID })
         </td>
     </tr>
-        }
+}
 
-    </table>
-
-} 
+</table>

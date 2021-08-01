@@ -9,6 +9,7 @@ namespace Vidly.ViewModels
     public class NewMovieViewModel
     {
         public IEnumerable<Genres> Genres { get; set; }
+        public Movie Movie { get; set; }
         public int? MovieID { get; set; }
 
         [Required()]
@@ -16,7 +17,7 @@ namespace Vidly.ViewModels
         public string Name { get; set; }
 
         [Required()]
-        public byte? Genre { get; set; }
+        public string Genre { get; set; }
 
         [StringLength(20)]
         public string Country { get; set; }

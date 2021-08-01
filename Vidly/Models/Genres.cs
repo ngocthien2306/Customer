@@ -8,7 +8,8 @@ namespace Vidly.Models
 {
     public class Genres
     {
-        public byte MovieID { get; set; }
+        [Key]
+        public byte? MovieID { get; set; }
 
         [Required()]
         [StringLength(50)]

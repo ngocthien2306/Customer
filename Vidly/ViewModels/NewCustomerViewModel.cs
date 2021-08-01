@@ -10,5 +10,12 @@ namespace Vidly.ViewModels
     {
         public IEnumerable<MemberShipType> MemberShipTypes { get; set; }
         public Customer Customer { get; set; }
+        public string Title
+        {
+            get
+            {
+                return Customer.Id != 0 ? "Edit Movie" : "New Movie";
+            }
+        }
     }
 }

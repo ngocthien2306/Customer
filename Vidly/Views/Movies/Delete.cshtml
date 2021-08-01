@@ -28,13 +28,45 @@
             @Html.DisplayFor(model => model.Genre)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Country)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Country)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Releasedate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Releasedate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DayAdded)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DayAdded)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AmountOfRock)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AmountOfRock)
+        </dd>
+
     </dl>
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-primary" /> |
+            <input type="submit" value="Delete" class="btn btn-default" /> |
             @Html.ActionLink("Back to List", "Index")
         </div>
     }

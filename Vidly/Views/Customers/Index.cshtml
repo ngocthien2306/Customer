@@ -17,8 +17,9 @@
 <h2>Customers</h2>
 
 <div>
-    <button class="btn-secondary">
+    <button class="btn-primary">
         @Html.ActionLink("Create New", "Create")
+        <br/>
     </button>
 </div>
 @using(Html.BeginForm())
@@ -52,8 +53,6 @@ else
                 <td>@customer.Birthdate</td>
 
                 <td>
-
-                    @Html.ActionLink("Edit", "Edit", new { id = customer.Id }) |
                     @Html.ActionLink("Details", "Details", new { id = customer.Id }) |
                     @Html.ActionLink("Delete", "Delete", new { id = customer.Id })
                 </td>
