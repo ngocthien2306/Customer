@@ -36,7 +36,32 @@ namespace Vidly.Controllers
 
             return View("Create", viewModel);
         }
-
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var viewModel = new NewCustomerViewModel
+            {
+                Customer = _context.Customers.Find(id)
+            };
+            
+            if (viewModel == null)
+            {
+                return HttpNotFound();
+            }
+            return View("Delete", viewModel);
+        }
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Customer customer = _context.Customers.Find(id);
+            _context.Customers.Remove(customer);
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Customers");
+        }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Save(Customer customer)
