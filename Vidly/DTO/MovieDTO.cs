@@ -13,7 +13,7 @@ namespace Vidly.DTO
         [Required()]
         [StringLength(50)]
         public string Name { get; set; }
-        public string Genre { get; set; }
+        public byte Genre { get; set; }
         public string Country { get; set; }
         public DateTimeOffset? Releasedate { get; set; }
 

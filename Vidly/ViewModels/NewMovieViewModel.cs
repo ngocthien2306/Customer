@@ -17,7 +17,7 @@ namespace Vidly.ViewModels
         public string Name { get; set; }
 
         [Required()]
-        public string Genre { get; set; }
+        public byte Genre { get; set; }
 
         [StringLength(20)]
         public string Country { get; set; }
