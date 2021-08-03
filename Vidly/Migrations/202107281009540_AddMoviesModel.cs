@@ -13,7 +13,7 @@ namespace Vidly.Migrations
                     {
                         MovieID = c.Int(nullable: false, identity: true),
                         Name = c.String(),
-                        Genre = c.String(),
+                        Genre = c.Byte(),
                         Country = c.String(),
                     })
                 .PrimaryKey(t => t.MovieID);

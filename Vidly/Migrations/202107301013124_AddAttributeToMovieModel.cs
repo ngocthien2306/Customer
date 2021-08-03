@@ -11,7 +11,7 @@ namespace Vidly.Migrations
                 "dbo.Genres",
                 c => new
                     {
-                        MovieID = c.Byte(nullable: false),
+                        MovieID = c.Byte(nullable: false, identity: true),
                         Name = c.String(nullable: false, maxLength: 50),
                     })
                 .PrimaryKey(t => t.MovieID);

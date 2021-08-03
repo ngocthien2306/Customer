@@ -13,8 +13,8 @@ namespace Vidly.DTO
         [StringLength(50)]
         public string Name { get; set; }
         public bool IsSubcribedToNewLetter { get; set; }
-        public byte? MembershipTypeId { get; set; }
-
+        public byte MembershipTypeId { get; set; }
+        public MembershipTypeDTO MembershipType { get; set; }
         public DateTime? Birthdate { get; set; }
     }
 }

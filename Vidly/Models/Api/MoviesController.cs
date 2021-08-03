@@ -17,9 +17,10 @@ namespace Vidly.Models.Api
         {
             _context = new ApplicationDbContext();
         }
-        public IEnumerable<MovieDTO> GetMovies()
+        public IHttpActionResult GetMovies()
         {
-            return _context.Movies.ToList().Select(Mapper.Map<Movie, MovieDTO>);
+            var musicDto = _context.Movies.ToList().Select(Mapper.Map<Movie, MovieDTO>);
+            return Ok(musicDto);
         }
         public IHttpActionResult GetDataMovies(byte id)
         {

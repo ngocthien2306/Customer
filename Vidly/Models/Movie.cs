@@ -16,7 +16,7 @@ namespace Vidly.Models
         public Genres Genres { get; set; }
 
         [Required()]
-        public string Genre { get; set; }
+        public byte Genre { get; set; }
 
         [Required(ErrorMessage ="Please enter country's name")]
         [StringLength(20)]
