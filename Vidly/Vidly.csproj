@@ -180,6 +180,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
     <Compile Include="DTO\CustomerDTO.cs" />
+    <Compile Include="DTO\MembershipTypeDTO.cs" />
     <Compile Include="DTO\MovieDTO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -238,8 +239,8 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Api\CustomersController.cs" />
-    <Compile Include="Models\Api\MoviesController.cs" />
+    <Compile Include="Controllers\Api\CustomersController.cs" />
+    <Compile Include="Controllers\Api\MoviesController.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Genres.cs" />
     <Compile Include="Models\IdentityModels.cs" />

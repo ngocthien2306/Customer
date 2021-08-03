@@ -7,5 +7,6 @@ namespace Vidly.DTO
 {
     public class MembershipTypeDTO
     {
+
     }
 }
