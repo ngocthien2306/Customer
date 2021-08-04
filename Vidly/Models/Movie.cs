@@ -23,7 +23,7 @@ namespace Vidly.Models
         public string Country { get; set; }
 
         [Display(Name = "Release Day")]
-        public DateTimeOffset? Releasedate { get; set; }
+        public DateTime? Releasedate { get; set; }
 
         public DateTime DayAdded { get; set; }
 

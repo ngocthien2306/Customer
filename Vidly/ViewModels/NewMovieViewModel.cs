@@ -23,7 +23,7 @@ namespace Vidly.ViewModels
         public string Country { get; set; }
 
         [Display(Name = "Release Day")]
-        public DateTimeOffset? Releasedate { get; set; }
+        public DateTime? Releasedate { get; set; }
 
         [Display(Name = "Number of Rock")]
         [Range(1, 20)]
@@ -46,6 +46,7 @@ namespace Vidly.ViewModels
             Name = movie.Name;
             Releasedate = movie.Releasedate;
             Country = movie.Country;
+            Genres = Genres;
             Genre = movie.Genre;
             AmountOfRock = movie.AmountOfRock;
         }

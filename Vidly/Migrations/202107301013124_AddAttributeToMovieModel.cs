@@ -22,16 +22,16 @@ namespace Vidly.Migrations
             AlterColumn("dbo.Movies", "Name", c => c.String(nullable: false, maxLength: 50));
             AlterColumn("dbo.Movies", "Genre", c => c.Byte(nullable: false));
             AlterColumn("dbo.Movies", "Country", c => c.String(maxLength: 20));
-            AlterColumn("dbo.Movies", "Releasedate", c => c.DateTimeOffset(precision: 7));
+            AlterColumn("dbo.Movies", "Releasedate", c => c.DateTime(precision: 7));
             CreateIndex("dbo.Movies", "Genres_MovieID");
             AddForeignKey("dbo.Movies", "Genres_MovieID", "dbo.Genres", "MovieID");
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.Movies", "Genres_MovieID", "dbo.Genres");
+            DropForeignKey("dbo.Movies", "Genre", "dbo.Genres");
             DropIndex("dbo.Movies", new[] { "Genres_MovieID" });
-            AlterColumn("dbo.Movies", "Releasedate", c => c.DateTimeOffset(nullable: false, precision: 7));
+            AlterColumn("dbo.Movies", "Releasedate", c => c.DateTime(nullable: false, precision: 7));
             AlterColumn("dbo.Movies", "Country", c => c.String());
             AlterColumn("dbo.Movies", "Genre", c => c.String());
             AlterColumn("dbo.Movies", "Name", c => c.String());

@@ -15,8 +15,8 @@ namespace Vidly.DTO
         public string Name { get; set; }
         public byte Genre { get; set; }
         public string Country { get; set; }
-        public DateTimeOffset? Releasedate { get; set; }
-
+        public DateTime? Releasedate { get; set; }
+        public GenreDTO Genres { get; set; }
         public DateTime DayAdded { get; set; }
         [Range(1, 20)]
         public byte AmountOfRock { get; set; }

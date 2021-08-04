@@ -13,6 +13,7 @@ namespace Vidly.Models
 
         [Required()]
         [StringLength(50)]
+        [Display(Name = "Type of Musics")]
         public string Name { get; set; }
     }
 }

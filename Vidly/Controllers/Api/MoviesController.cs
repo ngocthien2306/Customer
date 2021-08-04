@@ -7,7 +7,7 @@ using System.Web.Http;
 using Vidly.DTO;
 using Vidly.App_Start;
 using AutoMapper;
-
+using System.Data.Entity;
 namespace Vidly.Models.Api
 {
     public class MoviesController : ApiController
@@ -17,9 +17,10 @@ namespace Vidly.Models.Api
         {
             _context = new ApplicationDbContext();
         }
-        public IEnumerable<MovieDTO> GetMovies()
+        public IHttpActionResult GetMovies()
         {
-            return _context.Movies.ToList().Select(Mapper.Map<Movie, MovieDTO>);
+            var movie = _context.Movies.Include(g => g.Genres).ToList().Select(Mapper.Map<Movie, MovieDTO>);
+            return Ok(movie);
         }
         public IHttpActionResult GetDataMovies(byte id)
         {
@@ -41,31 +42,33 @@ namespace Vidly.Models.Api
             return Created(new Uri(Request.RequestUri + "/" + movie.MovieID), movieDTO);
         }
         [HttpPut] 
-        public void UpdateMovie(int id, MovieDTO movieDTO)
+        public IHttpActionResult UpdateMovie(int id, MovieDTO movieDTO)
         {
             var movieInDb = _context.Movies.SingleOrDefault(c => c.MovieID == id);
             if (!ModelState.IsValid)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
             if (movieInDb == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
             Mapper.Map(movieDTO, movieInDb);
-            movieInDb.Name = movieDTO.Name;
-            movieInDb.Genre = movieDTO.Genre;
-            movieInDb.Country = movieDTO.Country;
-            movieInDb.AmountOfRock = movieDTO.AmountOfRock;
-            movieInDb.Releasedate = movieDTO.Releasedate;
+            //movieInDb.Name = movieDTO.Name;
+            //movieInDb.Genre = movieDTO.Genre;
+            //movieInDb.Country = movieDTO.Country;
+            //movieInDb.AmountOfRock = movieDTO.AmountOfRock;
+            //movieInDb.Releasedate = movieDTO.Releasedate;
             _context.SaveChanges();
+            return Ok();
         }
         [HttpDelete]
-        public void DeleteMovie(int id)
+        public IHttpActionResult DeleteMovie(int id)
         {
             var movie = _context.Movies.SingleOrDefault(c => c.MovieID == id);
             if (!ModelState.IsValid)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
             if (movie == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
             _context.Movies.Remove(movie);
             _context.SaveChanges();
+            return Ok();
         }
     }
 }

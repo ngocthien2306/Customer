@@ -1,0 +1,42 @@
+﻿@model Vidly.Models.Movie
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detail</h2>
+<div>
+    <h2>@Model.Name</h2>
+    <hr/>
+    <dl id="movies" class="dl-horizontal">
+        <dt>@Html.DisplayNameFor(m => m.Name)</dt>
+        <dd>@Html.DisplayFor(m => m.Name)</dd>
+
+
+        <dt>@Html.DisplayNameFor(m => m.Genres.Name)</dt>
+        <dd>@Html.DisplayFor(m => m.Genres.Name)</dd>
+
+
+        <dt>@Html.DisplayNameFor(m => m.Country)</dt>
+        <dd>@Html.DisplayFor(m => m.Country)</dd>
+
+
+        <dt>@Html.DisplayNameFor(m => m.Releasedate)</dt>
+        <dd>@Html.DisplayFor(m => m.Releasedate)</dd>
+
+
+        <dt>@Html.DisplayNameFor(m => m.DayAdded)</dt>
+        <dd>@Html.DisplayFor(m => m.DayAdded)</dd>
+
+
+        <dt>@Html.DisplayNameFor(m => m.AmountOfRock)</dt>
+        <dd>@Html.DisplayFor(m => m.AmountOfRock)</dd>
+
+
+    </dl>
+</div>
+
+<div>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MovieID }) |
+    @Html.ActionLink("Back to List", "Index")
+</div>

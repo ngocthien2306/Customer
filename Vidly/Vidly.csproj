@@ -16,11 +16,11 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort>44300</IISExpressSSLPort>
+    <IISExpressSSLPort>44337</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
     <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
-    <Use64BitIISExpress />
+    <Use64BitIISExpress>false</Use64BitIISExpress>
     <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -195,6 +195,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
     <Compile Include="DTO\CustomerDTO.cs" />
+    <Compile Include="DTO\GenreDTO.cs" />
     <Compile Include="DTO\MembershipTypeDTO.cs" />
     <Compile Include="DTO\MovieDTO.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
@@ -253,6 +254,18 @@
     <Compile Include="Migrations\202107311011301_Edit.Designer.cs">
       <DependentUpon>202107311011301_Edit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202108040157072_Update_TypeOfMusic.cs" />
+    <Compile Include="Migrations\202108040157072_Update_TypeOfMusic.Designer.cs">
+      <DependentUpon>202108040157072_Update_TypeOfMusic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108040703460_SeedUsers.cs" />
+    <Compile Include="Migrations\202108040703460_SeedUsers.Designer.cs">
+      <DependentUpon>202108040703460_SeedUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108040803443_AddDrivingLicenseToApplicationUser.cs" />
+    <Compile Include="Migrations\202108040803443_AddDrivingLicenseToApplicationUser.Designer.cs">
+      <DependentUpon>202108040803443_AddDrivingLicenseToApplicationUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Controllers\Api\CustomersController.cs" />
@@ -264,6 +277,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MemberShipType.cs" />
     <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\RolesName.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\NewCustomerViewModel.cs" />
@@ -572,7 +586,10 @@
     <Content Include="Views\Customers\Delete.cshtml" />
     <None Include="Views\Customers\Details.cshtml" />
     <None Include="Views\Customers\Index.cshtml" />
-    <Content Include="Views\Movies\Index.cshtml" />
+    <Content Include="Views\Movies\List.cshtml" />
+    <Content Include="Views\Movies\Detail.cshtml" />
+    <Content Include="Views\Movies\New.cshtml" />
+    <Content Include="Views\Movies\ReadOnlyList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -624,6 +641,15 @@
     <EmbeddedResource Include="Migrations\202107311011301_Edit.resx">
       <DependentUpon>202107311011301_Edit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108040157072_Update_TypeOfMusic.resx">
+      <DependentUpon>202108040157072_Update_TypeOfMusic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108040703460_SeedUsers.resx">
+      <DependentUpon>202108040703460_SeedUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108040803443_AddDrivingLicenseToApplicationUser.resx">
+      <DependentUpon>202108040803443_AddDrivingLicenseToApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -643,7 +669,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>49333</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:49333/</IISUrl>
+          <IISUrl>https://localhost:44337/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

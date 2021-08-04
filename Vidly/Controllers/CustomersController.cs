@@ -90,7 +90,7 @@ namespace Vidly.Controllers
 
             return RedirectToAction("Index", "Customers");
         }
-        public ActionResult Details(int?id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
