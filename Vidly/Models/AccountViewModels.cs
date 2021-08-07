@@ -65,6 +65,9 @@ namespace Vidly.Models
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name = "Phone Number Confirmed")]
+        public bool PhoneNumberConfirmed { get; set; }
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
@@ -72,6 +75,12 @@ namespace Vidly.Models
         [Required]
         [Display(Name = "Driving License")]
         public string DrivingLicense { get; set; }
+        
+        [Required]
+        [Display(Name = "Phone Number")]
+        [StringLength(50, ErrorMessage = "Wrong character, phone just number!", MinimumLength = 8)]
+        public string PhoneNumber { get; set; }
+
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]

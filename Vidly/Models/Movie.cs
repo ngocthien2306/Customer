@@ -7,7 +7,7 @@ namespace Vidly.Models
 {
     public class Movie
     {
-        public int? MovieID { get; set; }
+        public int MovieID { get; set; }
 
         [Required(ErrorMessage ="Please enter movie's name")]
         [StringLength(50)]
@@ -30,5 +30,7 @@ namespace Vidly.Models
         [Display(Name = "Number of Rock")]
         [Range(1, 20)]
         public byte AmountOfRock { get; set; }
+
+        public byte NumberAvailable { get; set; }
     }
 }

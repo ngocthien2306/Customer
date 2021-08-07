@@ -12,7 +12,7 @@ namespace Vidly.Models.Api
 {
     public class MoviesController : ApiController
     {
-        ApplicationDbContext _context;
+        private ApplicationDbContext _context;
         public MoviesController()
         {
             _context = new ApplicationDbContext();
@@ -22,7 +22,8 @@ namespace Vidly.Models.Api
             var movie = _context.Movies.Include(g => g.Genres).ToList().Select(Mapper.Map<Movie, MovieDTO>);
             return Ok(movie);
         }
-        public IHttpActionResult GetDataMovies(byte id)
+
+        public IHttpActionResult GetDataMovies(int? id)
         {
             var movie = _context.Movies.SingleOrDefault(c => c.MovieID == id);
             if (movie == null)
@@ -41,7 +42,7 @@ namespace Vidly.Models.Api
 
             return Created(new Uri(Request.RequestUri + "/" + movie.MovieID), movieDTO);
         }
-        [HttpPut] 
+        [HttpPut]
         public IHttpActionResult UpdateMovie(int id, MovieDTO movieDTO)
         {
             var movieInDb = _context.Movies.SingleOrDefault(c => c.MovieID == id);
@@ -50,14 +51,15 @@ namespace Vidly.Models.Api
             if (movieInDb == null)
                 return NotFound();
             Mapper.Map(movieDTO, movieInDb);
-            //movieInDb.Name = movieDTO.Name;
-            //movieInDb.Genre = movieDTO.Genre;
-            //movieInDb.Country = movieDTO.Country;
-            //movieInDb.AmountOfRock = movieDTO.AmountOfRock;
-            //movieInDb.Releasedate = movieDTO.Releasedate;
+            movieInDb.Name = movieDTO.Name;
+            movieInDb.Genre = movieDTO.Genre;
+            movieInDb.Country = movieDTO.Country;
+            movieInDb.AmountOfRock = movieDTO.AmountOfRock;
+            movieInDb.Releasedate = movieDTO.Releasedate;
             _context.SaveChanges();
             return Ok();
         }
+        //Delete api/movies/1
         [HttpDelete]
         public IHttpActionResult DeleteMovie(int id)
         {
