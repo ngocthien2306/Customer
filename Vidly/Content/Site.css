@@ -22,9 +22,10 @@ select,
 textarea {
     max-width: 280px;
 }
-.field-validation-error {
+.field-validation-error, label.error {
     color: red;
+
 }
-.input-valication-error {
+.input-valication-error, input.error {
     border: 2px solid red;
 }
